@@ -1,0 +1,44 @@
+Ubuntu16.04  Python开发环境搭建。
+
+第一步，安装JDK。 
+因为pycharm是用Java编写的，所以必须要安装JDK才可以运行。
+命令： 
+sudo add-apt-repository ppa:webupd8team/java 
+sudo apt-get update 
+sudo apt-get install oracle-java8-installer
+测试： 
+java -version和javac -version
+配置$JAVA_HOME 环境变量 
+3.1找到java的安装路径 
+命令：sudo update-alternatives --config java 
+返回结果：There is only one alternative in link group java (providing /usr/bin/java): /usr/lib/jvm/java-8-oracle/jre/bin/java 
+Nothing to configure. 
+可知安装路径为：/usr/lib/jvm/java-8-oracle 
+3.2 编写环境文件 
+命令：sudo nano /etc/environment 
+添加如下一行：JAVA_HOME="/usr/lib/jvm/java-8-oracle" 
+3.3 重读环境文件 
+命令：source /etc/environment 
+3.4 测试 
+命令：echo $JAVA_HOME 
+返回：/usr/lib/jvm/java-8-oracle
+
+
+第二步，安装Virtualenv和Virtualenvwrapper
+pip install virtualenv 
+pip install virtualenvwrapper 
+创建一个虚拟环境virtualenv env    
+#env 为虚拟环境的名字，其实就是一个文件夹，在home下的用户名文件夹下可以找到。 
+启动虚拟环境命令为 source env/bin/activate
+#用deactivate命令，退出virtualenv虚拟环境。
+
+第三步，安装Flask 
+source env/bin/activate
+pip install Flask
+
+第四步，安装Pycharm
+#先官网下载压缩包解压。
+cd /home/bevis/pycharm-community-2016.1.4/bin
+打开pycharm：./pycharm.sh 
+按下键盘上的 Win + a 组合键 将Pycharm 添加到快捷启动栏。
+
